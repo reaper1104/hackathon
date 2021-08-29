@@ -27,6 +27,10 @@ router.get('/homepage', function(req, res, next) {
   res.sendFile(path.join(__dirname + '/../public/homepage.html'), { title: 'Express' });
 });
 
+router.get('/student/classes', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/../public/student/joinclass.html'));
+});
+
 
 
 module.exports = router;

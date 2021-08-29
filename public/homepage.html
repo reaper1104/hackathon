@@ -12,6 +12,49 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
+  <nav class="navbar is-dark is-fixed-top">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        Home
+      </a>
+      <div class="navbar-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link is-arrowless">
+          Sign Up
+        </a>
+        <div class="navbar-dropdown">
+          <a href="/student/register" class="navbar-item">
+            Student
+          </a>
+          <hr class="navbar-divider">
+          <a href="/teacher/register" class="navbar-item">
+            Teacher
+          </a>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link is-arrowless">
+            Sign In
+          </a>
+          <div class="navbar-dropdown">
+            <a href="/student/login" class="navbar-item">
+              Student
+            </a>
+            <hr class="navbar-divider">
+            <a href="/teacher/login" class="navbar-item">
+              Teacher
+            </a>
+          </div>
+        </div>
+    </div>
+  </nav>
     <button> </button>
     <button onclick="showClasses()"></button>
     <div class="card">
@@ -21,7 +64,7 @@
                     <div class="field">
                         <label for="" class="label">Class Name</label>
                         <div class="control has-icons-left">
-                          <input type="text" name="class-name" placeholder="class name" class="input" required>
+                          <input type="text" name="classname" placeholder="class name" class="input" required>
                           <span class="icon is-small is-left">
                             <i class="fa fa-envelope"></i>
                           </span>
@@ -30,7 +73,7 @@
                     <div class="field">
                         <label for="" class="label">Subject</label>
                         <div class="control has-icons-left">
-                          <input type="text" name="subject-name" placeholder="Subject" class="input" required>
+                          <input type="text" name="subjectname" placeholder="Subject" class="input" required>
                           <span class="icon is-small is-left">
                             <i class="fa fa-lock"></i>
                           </span>

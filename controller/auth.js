@@ -5,6 +5,7 @@ var logger = require('morgan');
 var dotenv = require('dotenv');
 const sqlite3 = require('sqlite3').verbose();
 const session = require('express-session');
+const e = require('express');
 
 dotenv.config({path: './.env'})
 
@@ -177,6 +178,119 @@ exports.loginStudent = (req, res) => {
 exports.createclass = (req, res) => {
   
   console.log(req.body);
-  
+  const {classname, subjectname} = req.body;
+  console.log(classname);
+  console.log(subjectname);
+
+  db.all('SELECT NAME FROM CLASS WHERE NAME = ?', [classname], (error, results) => {
+    if(results.length > 0) {
+      res.send('<a href="/homepage">Class already created</a>');
+
+    }
+    else {
+      console.log(req.session.username);
+      username = req.session.username;
+      db.all('SELECT ID FROM TEACHER WHERE USERNAME=?', [username], (error, results) => {
+        if (error) {
+          console.log(error);
+        }
+        else {
+          console.log(results[0].ID);
+          const id = results[0].ID;
+          const str = "class_".concat(id);
+          const classcode = (Buffer.from(str, 'utf-8')).toString('base64');
+          console.log(classcode);
+          db.run('INSERT INTO CLASS(NAME, SUBJECT, CODE, TID) VALUES ((?), (?), (?), (?))', [classname, subjectname, classcode, id], (error) => {
+            if(error) {
+              console.log(error);
+            }
+            else {
+              const output =  `<html lang="en">
+              <head>
+                  <meta charset="UTF-8">
+                  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Subjext created</title>
+                  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+                  <script
+                  src="https://code.jquery.com/jquery-3.1.1.min.js"
+                  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                  crossorigin="anonymous"></script>
+                <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+              </head>
+              <body>
+              <script>
+              function myfunction() {
+                var classcode = "`+classcode+`";
+                document.getElementById('showcode').innerHTML = classcode;
+                //classcode.select();
+                //classcode.setSelectionRange(0, 99999); 
+                //navigator.clipboard.writeText(classcode.value);
+                //alert("Text Copied");
+              }
+              function copytext() {
+
+              }
+              </script>
+                <nav class="navbar is-dark is-fixed-top">
+                <div class="navbar-brand">
+                  <a class="navbar-item" href="/">
+                    Home
+                  </a>
+                  <div class="navbar-burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+          
+                  <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link is-arrowless">
+                      Sign Up
+                    </a>
+                    <div class="navbar-dropdown">
+                      <a href="/student/register" class="navbar-item">
+                        Student
+                      </a>
+                      <hr class="navbar-divider">
+                      <a href="/teacher/register" class="navbar-item">
+                        Teacher
+                      </a>
+                    </div>
+                  </div>
+                  <div class="navbar-item has-dropdown is-hoverable">
+                      <a class="navbar-link is-arrowless">
+                        Sign In
+                      </a>
+                      <div class="navbar-dropdown">
+                        <a href="/student/login" class="navbar-item">
+                          Student
+                        </a>
+                        <hr class="navbar-divider">
+                        <a href="/teacher/login" class="navbar-item">
+                          Teacher
+                        </a>
+                      </div>
+                    </div>
+                </div>
+              </nav> 
+              <div class= "hero-body">
+                <div class="container is-centered">
+                  <button class="button is-medium is-fullwidth" onclick="myfunction()">Get Classcode</button>
+                  <div id = "showcode"></div>
+                </div>
+                <button class="button is-large" onclick="location.href='/homepage'">Go To Homepage</button>
+              </div>
+              </body></html>`;
+
+              return res.send(output);
+            }
+          });
+        }
+        
+      });
+    }
+  });
 
 }
