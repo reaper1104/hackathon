@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        .has-bg-img {
+            background: url(images/background_2.jpg)center center;
+            background-size: cover;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+    <nav class="navbar is-dark is-fixed-top">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            Home
+          </a>
+          <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+  
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless">
+              Sign Up
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/student/register" class="navbar-item">
+                Student
+              </a>
+              <hr class="navbar-divider">
+              <a href="/teacher/register" class="navbar-item">
+                Teacher
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link is-arrowless">
+                Sign In
+              </a>
+              <div class="navbar-dropdown">
+                <a href="/student/login" class="navbar-item">
+                  Student
+                </a>
+                <hr class="navbar-divider">
+                <a href="/teacher/login" class="navbar-item">
+                  Teacher
+                </a>
+              </div>
+            </div>
+        </div>
+      </nav>
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <form class="box" action="/auth/login" method="POST">
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Username" name="userName" required>
+                            <span class="icon is-small is-left">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" placeholder="Password" name="password" required>
+                            <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="field is-grouped is-grouped-right">
+                        <p class="control">
+                            <input type="submit" value="Sign In" class="button is-info">
+                        </p>
+                        <p class="control">
+                            <input type="reset" value="reset" class="button is-danger">
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

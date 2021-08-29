@@ -1,13 +1,87 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Flipr</title>
+  </head>
+  <body>
+    <nav class="navbar is-dark is-fixed-top">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+        <div class="navbar-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
 
-<head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+        <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link is-arrowless">
+            Sign Up
+          </a>
+          <div class="navbar-dropdown">
+            <a href="/student/register" class="navbar-item">
+              Student
+            </a>
+            <hr class="navbar-divider">
+            <a href="/teacher/register" class="navbar-item">
+              Teacher
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless">
+              Sign In
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/student/login" class="navbar-item">
+                Student
+              </a>
+              <hr class="navbar-divider">
+              <a href="/teacher/login" class="navbar-item">
+                Teacher
+              </a>
+            </div>
+          </div>
+      </div>
+    </nav>
 
-<body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-</body>
+    <section class="hero is-fullheight-with-navbar">
+      <div class="hero-body">
+        <h1 class="title">Hackathon Solution</h1>
+      </div>
+    </section>
+  </body>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
+      });
+    }
+  });
+
+  </script>
 </html>

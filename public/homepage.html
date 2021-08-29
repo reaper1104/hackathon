@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <button> </button>
+    <button onclick="showClasses()"></button>
+    <div class="card">
+        <div class="card-content">
+            <div class="content">
+                <form id="createclass" class="box" action="/auth/createclass" method="POST">
+                    <div class="field">
+                        <label for="" class="label">Class Name</label>
+                        <div class="control has-icons-left">
+                          <input type="text" name="class-name" placeholder="class name" class="input" required>
+                          <span class="icon is-small is-left">
+                            <i class="fa fa-envelope"></i>
+                          </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="" class="label">Subject</label>
+                        <div class="control has-icons-left">
+                          <input type="text" name="subject-name" placeholder="Subject" class="input" required>
+                          <span class="icon is-small is-left">
+                            <i class="fa fa-lock"></i>
+                          </span>
+                        </div>
+                    </div>
+                      <div>
+                        <input type="submit" value="Create" class="button is-info" onclick="">
+                        <button class="button">
+                          Reset
+                        </button>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <ol id="classes">
+      <li id="class">
+        <div id="classname"></div>
+        <div id="subjectname"></div>
+      </li>
+    </ol>
+</body>
+<script src="./javascripts/main.js"></script>
+</html>

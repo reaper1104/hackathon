@@ -2,4 +2,4 @@
 ---
 ### Build database
 
-`sqlite3 schema.db ".read schema.sql" `
+`$ sqlite3 schema.db ".read schema.sql" `
