@@ -23,6 +23,7 @@ let db = new sqlite3.Database('./schema.db', (err) => {
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const e = require('express');
 
 var app = express();
 
@@ -48,21 +49,31 @@ app.use('/users', usersRouter);
 
 app.use(cors());
 
+const router = express.Router();
+
+
 app.get('/teacherclasses', (req, res, error) => {
+    console.log(req.body);
+    console.log(req.params);
     db.all('SELECT ID FROM TEACHER WHERE USERNAME = ?', [req.session.username], (error, results) => {
+        console.log(results);
         if(error) {
-            res.send(error);
+            return res.send(error);
         }
         else {
             const tid = results[0].ID;
-            db.all('SELECT NAME, SUBJECT, CODE FROM CLASS WHERE TID = ?', [tid], (errpr, result) => {
-                res.send(result);
+            console.log(tid);
+            db.all('SELECT NAME, SUBJECT, CODE FROM CLASS WHERE TID = ?', [tid], (error, result) => {
+                if(error) {
+                    return res.send(error);
+                }
+                else {
+                    return res.json(result);
+                }
             });
         }
     });
 });
-
-
 
 
 app.listen(process.env.PORT, ()=> console.log('App is running'));

@@ -115,14 +115,17 @@ exports.loginTeacher = async (req, res) => {
       
       if(userName && password) {
           db.all('SELECT * FROM TEACHER WHERE USERNAME = ? AND PASSWORD = ?', [userName, password], function(error, results, fields) {
-              if (results.length > 0) {
+            if(error) {
+              return res.send(error);
+            }  
+            if (results.length > 0) {
                   sessionData = req.session;
 
                   sessionData.loggedin = true;
                   sessionData.username = userName;
                   console.log(req.session);
                   console.log(req.session.username);
-                  res.redirect('/homepage');
+                  res.redirect('/teacher/homepage');
               } else {
                   res.send('Incorrect Username and/or Password!');
               }			
@@ -151,10 +154,10 @@ exports.loginStudent = (req, res) => {
                   sessionData = req.session;
                 
                   sessionData.loggedinstudent = true;
-                  sessionData.username = studentuserName;
+                  sessionData.studentusername = userName;
                   console.log(req.session);
                   console.log(req.session.studentusername);
-                  res.redirect('/homepage');
+                  res.redirect('/student/classes');
               } else {
                   res.send('Incorrect Username and/or Password!');
               }			

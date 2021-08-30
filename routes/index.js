@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/teacher/register', function(req, res) {
+  console.log(req.body);
   res.sendFile(path.join(__dirname + '/../public/teacher/register.html'));
 });
 
@@ -20,6 +21,8 @@ router.get('/student/login', function(req, res, next) {
 });
 
 router.get('/teacher/login', function(req, res, next) {
+  console.log("params" + req.params);
+  console.log("body" + req.body);
   res.sendFile(path.join(__dirname + '/../public/teacher/signin.html'), { title: 'Express' });
 });
 
@@ -30,6 +33,18 @@ router.get('/homepage', function(req, res, next) {
 router.get('/student/classes', function(req, res, next) {
   res.sendFile(path.join(__dirname + '/../public/student/joinclass.html'));
 });
+
+router.get('/teacher/assignment', function(req, res, next) {
+  console.log("params" + req.params);
+  console.log("body" + req.body);
+  res.sendFile(path.join(__dirname + '/../public/teacher/assignment.html'));
+});
+
+router.get('/teacher/homepage', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/../public/teacher/teacher.html'));
+});
+
+
 
 
 

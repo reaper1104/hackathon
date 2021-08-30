@@ -23,8 +23,7 @@
             <span></span>
           </div>
         </div>
-    
-          <div class="navbar-end">
+        <div class="navbar-end">
             <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link is-arrowless">
               Sign Up
@@ -38,12 +37,12 @@
                 Teacher
               </a>
             </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link is-arrowless">
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless">
                 Sign In
-              </a>
-              <div class="navbar-dropdown">
+            </a>
+            <div class="navbar-dropdown">
                 <a href="/student/login" class="navbar-item">
                   Student
                 </a>
@@ -55,5 +54,32 @@
             </div>
         </div>
     </nav>
+
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+              <form class="box" action="/auth/joinclass" method="POST">
+                <div class="field">
+                    <label class="label">Subject Code:</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Subject code" name="subcode" required>
+                        <span class="icon is-small is-left">
+                                <i class="fa fa-user"></i>
+                            </span>
+                    </div>
+                </div>
+                <div class="field is-grouped is-grouped-right">
+                  <p class="control">
+                    <input type="submit" value="Join Class" class="button is-info">
+                  </p>
+                  <p class="control">
+                    <input type="reset" value="reset" class="button is-danger">
+                  </p>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

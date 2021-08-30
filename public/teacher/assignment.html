@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <h1>Assignment Upload</h1>
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <form class="box" action="/auth/uploadassignment" method="POST" enctype="multipart/form-data">
+                    <div class="field">
+                        <label class="label">Assignment Name:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Assignmentname" name="assignmentname" required>
+                            <span class="icon is-small is-left">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Upload file: </label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="file" placeholder="File" name="assignmentupload" required>
+                            <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="field is-grouped is-grouped-right">
+                        <p class="control">
+                            <input type="submit" value="Submit" class="button is-info">
+                        </p>
+                        <p class="control">
+                            <input type="reset" value="Reset" class="button is-danger">
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+<script src="../javascripts/teacher.js"></script>
+</html>
