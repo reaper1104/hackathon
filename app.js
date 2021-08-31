@@ -24,6 +24,7 @@ let db = new sqlite3.Database('./schema.db', (err) => {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const e = require('express');
+const { error } = require('console');
 
 var app = express();
 
@@ -74,6 +75,44 @@ app.get('/teacherclasses', (req, res, error) => {
         }
     });
 });
+
+app.get('/previousassignments', (req, res, error) => {
+    db.all('SELECT A.NAME AS NAME, A.LINK AS LINK  FROM ASSIGNMENT A WHERE A.TID=?', [req.session.teacherid], (error, result) => {
+        if(error) {
+            console.log(error);
+            return res.send(error);
+        }
+        else {
+            console.log(result);
+            res.json(result);
+        }
+    });
+});
+
+app.get('/studentclasses', (req, res, error) => {
+    console.log(req.session.studentusername);
+    db.all('SELECT ID FROM STUDENT WHERE USERNAME = ?', [req.session.studentusername], (error, results) => {
+        console.log(results);
+        if(error) {
+            return res.send(error);
+        }
+        else {
+            const studentid = results[0].ID;
+            console.log(studentid);
+            db.all('SELECT NAME, SUBJECT, CODE  FROM CLASS WHERE ID IN (SELECT CID FROM CLASS_STUDENT WHERE SID = ?);', [studentid], (error, result) => {
+                if(error) {
+                    console.log(error);
+                    return res.send(error);
+                }
+                else {
+                    console.log("studentresult: " + result);
+                    return res.json(result);
+                }
+            });
+        }
+    });
+});
+
 
 
 app.listen(process.env.PORT, ()=> console.log('App is running'));

@@ -8,18 +8,18 @@ function view() {
         var i=0;
         var x = 0;
         var output = `<div class="box">
-        <button class="button is-warning is-light is-large is-fullwidth"  id="center"  onclick="location.href='/homepage'">Create</button>
+        <button class="button is-warning is-light is-large is-fullwidth"  id="center"  onclick="location.href='/teacher/createclass'">Create</button>
     </div>`;
         for(; i<data.length; i++) {
             x += 1;
             output += `
-            <li id = "${x}_class">
                 <div class="box">
-                    <a onclick='dashboard(this)' id="${data[i].CODE}" class='${x}'>'${data[i].SUBJECT}'</a>
-                    <p>'${data[i].NAME}'</p>
-                    <p>'${data[i].CODE}'</p>
-                </div>
-            <li>`;
+                <ul>
+                    <li><a onclick='dashboard(this)' id="${data[i].CODE}" class='button is-success is-light is-large is-fullwidth'>'${data[i].SUBJECT}'</a></li>
+                    <li><p class="button is-warning is-light is-large is-fullwidth" id="marg">'${data[i].NAME}'</p></li>
+                    <li><p class="button is-danger is-light is-large is-fullwidth" id="marg">'${data[i].CODE}'</p></li>
+                </ul>
+                </div>`;
         }
     
         document.getElementById('hellomf').innerHTML = output;
@@ -32,27 +32,19 @@ function view() {
 async function dashboard(elem) {
     console.log(typeof(elem.id));
     const code = elem.id.toString();        
+    
     const ide = {id: code};
+    localStorage.setItem("code", code);
+    
+    fetch('/auth/assignmentpage?' + new URLSearchParams({
+        id: code,
+    }))
+    .then(response => response.json())
+    .then(data => {
+        
+         window.location = '/teacher/assignment';
 
-    const response = await fetch('/auth/assignmentpage', {
-        method: 'POST',
-        mode: "same-origin",
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify(ide)
-        })
-// no-cors, *cors, same-origin
-        .then(data => {
-            console.log("push hard");
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.log("push hard so");
-            console.error('Error:', error);
-        });
-
-        window.location = '/teacher/assignment';
+    })
+    .catch(err => console.log(err));
 }
 

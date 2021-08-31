@@ -26,12 +26,14 @@ router.get('/teacher/login', function(req, res, next) {
   res.sendFile(path.join(__dirname + '/../public/teacher/signin.html'), { title: 'Express' });
 });
 
-router.get('/homepage', function(req, res, next) {
-  res.sendFile(path.join(__dirname + '/../public/homepage.html'), { title: 'Express' });
+router.get('/teacher/createclass', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/../public/teacher/homepage.html'), { title: 'Express' });
 });
 
-router.get('/student/classes', function(req, res, next) {
-  res.sendFile(path.join(__dirname + '/../public/student/joinclass.html'));
+router.get('/student/homepage', function(req, res, next) {
+  console.log(req.body);
+
+  res.sendFile(path.join(__dirname + '/../public/student/homepage.html'));
 });
 
 router.get('/teacher/assignment', function(req, res, next) {
@@ -43,6 +45,24 @@ router.get('/teacher/assignment', function(req, res, next) {
 router.get('/teacher/homepage', function(req, res, next) {
   res.sendFile(path.join(__dirname + '/../public/teacher/teacher.html'));
 });
+
+router.get('/student/joinclass', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/../public/student/joinclass.html'));
+});
+
+router.get('/student/assignment', function(req, res, next) {
+  console.log(req.body);
+  res.sendFile(path.join(__dirname + '/../public/student/assignmentpage.html'));
+});
+
+router.get('/teacher/test', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/../public/teacher/test.html'));
+});
+
+router.get('/student/test', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/../public/student/test.html'));
+});
+
 
 
 

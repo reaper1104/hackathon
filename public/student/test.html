@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  </head>
+  <body onload="loadstudenttests()">
+    <nav class="navbar is-dark is-fixed-top">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/student/homepage">
+            Home
+          </a>
+          <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+          <div class="navbar-end">
+            <a class="navbar-item" href="/student/homepage">Class</a>
+            <a class="navbar-item" href="/student/assignment">Assignment</a>
+            <a class="navbar-item is-active" href="/student/test">Test</a>
+        </div>
+    </nav>
+    <h1>Upcoming Tests</h1>
+    <div class="hero-body">
+        <table class="table is-striped is-hoverable is-fullwidth" id = "table">
+            <thead>
+            <tr>
+              <th><abbr title="S No.">Serial No.</abbr></th>
+              <th>Test Name</th>
+              <th>Test Date</th>
+              <th>Link</th>
+            </tr>
+            </thead>
+            <tbody id="upcomingtests">
+            </tbody>
+        </table>
+    </div>
+      <h1>Previous Tests</h1>
+      <div class="hero-body">
+          <table class="table is-striped is-hoverable is-fullwidth" id = "table">
+              <thead>
+              <tr>
+                <th><abbr title="S No.">Serial No.</abbr></th>
+                <th>Test Name</th>
+                <th>Test Date</th>
+                <th>Link</th>
+              </tr>
+              </thead>
+              <tbody id="previoustests">
+              </tbody>
+          </table>
+      </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+  <script src="../javascripts/main.js"></script>
+</html>

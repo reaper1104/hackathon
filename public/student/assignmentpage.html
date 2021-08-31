@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body onload="viewassignments()">
+<body onload="viewstudentassignments()">
     <nav class="navbar is-dark is-fixed-top">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/teacher/homepage">
+          <a class="navbar-item" href="/student/homepage">
             Home
           </a>
           <div class="navbar-burger">
@@ -21,9 +21,9 @@
         </div>
 
           <div class="navbar-end">
-            <a class="navbar-item" href="/teacher/homepage">Class</a>
-            <a class="navbar-item is-active" href="/teacher/assignment">Assignment</a>
-            <a class="navbar-item" href="/teacher/test">Test</a>
+            <a class="navbar-item" href="/student/homepage">Class</a>
+            <a class="navbar-item is-active" href="/student/assignment">Assignment</a>
+            <a class="navbar-item" href="/student/test">Test</a>
         </div>
     </nav>
     <h1>Assignment Upload</h1>
@@ -49,16 +49,6 @@
                                 </span>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Class Code: </label>
-                        <div class="control has-icons-left" id="code">
-
-                            <span class="icon is-small is-left">
-                                    <i class="fa fa-lock"></i>
-                                </span>
-                        </div>
-                    </div>
-
                     <div class="field is-grouped is-grouped-right">
                         <p class="control">
                             <input type="submit" value="Submit" class="button is-info">
@@ -78,7 +68,6 @@
             <tr>
               <th><abbr title="S No.">Serial No.</abbr></th>
               <th>Assignment Name</th>
-              <th>Date</th>
               <th>Link</th>
             </tr>
             </thead>

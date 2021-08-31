@@ -35,7 +35,7 @@ exports.register = (req, res) => {
     console.log(results);
 
     if ( results.length > 0 ) {
-        return res.send('That user is already in use');
+        return res.send(`<a href='/teacher/register'>That user is already in use</a>`);
         //res.redirect('/index.html');
     }
 
@@ -54,7 +54,7 @@ exports.register = (req, res) => {
 
         else {
             console.log(results);
-            return res.send('User registered');
+            return res.send(`<a href='/teacher/login'>User registered</a>`);
         }
     });
     console.log('bye');
@@ -80,7 +80,7 @@ exports.regstudent = (req, res) => {
     console.log(results);
 
     if ( results.length > 0 ) {
-        return res.send('That user is already in use');
+        return res.send(`<a href='/'>That user is already in use</a>`);
         //res.redirect('/index.html');
     }
 
@@ -99,7 +99,7 @@ exports.regstudent = (req, res) => {
 
         else {
             console.log(results);
-            return res.send('STUDENT registered');
+            return res.send(`<a href='/student/login'>STUDENT registered</a>`);
         }
     });
     console.log('bye');
@@ -157,7 +157,7 @@ exports.loginStudent = (req, res) => {
                   sessionData.studentusername = userName;
                   console.log(req.session);
                   console.log(req.session.studentusername);
-                  res.redirect('/student/classes');
+                  res.redirect('/student/homepage');
               } else {
                   res.send('Incorrect Username and/or Password!');
               }			
@@ -185,22 +185,24 @@ exports.createclass = (req, res) => {
   console.log(classname);
   console.log(subjectname);
 
-  db.all('SELECT NAME FROM CLASS WHERE NAME = ?', [classname], (error, results) => {
-    if(results.length > 0) {
-      res.send('<a href="/homepage">Class already created</a>');
+  db.all('SELECT NAME FROM CLASS WHERE NAME = ?', [classname], (error, result) => {
+    if(result.length > 0) {
+      res.send('<a href="/teacher/homepage">Class already created</a>');
 
     }
     else {
       console.log(req.session.username);
       username = req.session.username;
-      db.all('SELECT ID FROM TEACHER WHERE USERNAME=?', [username], (error, results) => {
+      db.all('SELECT ID FROM TEACHER WHERE USERNAME=?', [req.session.username], (error, results) => {
         if (error) {
           console.log(error);
         }
         else {
+          console.log(results);
           console.log(results[0].ID);
           const id = results[0].ID;
-          const str = "class_".concat(id);
+
+          const str = "class_".concat(subjectname);
           const classcode = (Buffer.from(str, 'utf-8')).toString('base64');
           console.log(classcode);
           db.run('INSERT INTO CLASS(NAME, SUBJECT, CODE, TID) VALUES ((?), (?), (?), (?))', [classname, subjectname, classcode, id], (error) => {
@@ -283,7 +285,7 @@ exports.createclass = (req, res) => {
                   <button class="button is-medium is-fullwidth" onclick="myfunction()">Get Classcode</button>
                   <div id = "showcode"></div>
                 </div>
-                <button class="button is-large" onclick="location.href='/homepage'">Go To Homepage</button>
+                <button class="button is-large" onclick="location.href='/teacher/homepage'">Go To Homepage</button>
               </div>
               </body></html>`;
 
