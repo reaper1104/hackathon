@@ -34,6 +34,9 @@ function viewstudentassignments() {
     console.log("viewstudentassignments");
     const code = localStorage.getItem("code");
     console.log(code);
+
+   // document.getElementById("codeee").innerHTML = `<input class="input" type="text" name="code" value="${code}">`;
+
     fetch('/auth/studentassignmentpage?' + new URLSearchParams({
         id: code,
     }))
@@ -159,4 +162,8 @@ function testup() {
     })
     .catch(err => console.log(err))
 
+}
+
+function verybad() {
+    console.log("fuck off");
 }

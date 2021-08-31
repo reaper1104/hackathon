@@ -18,6 +18,8 @@ const storage = multer.diskStorage({
     }
 });
 
+
+
 const storage2 = multer.diskStorage({
     destination: (req, res, cb) => {
         cb(null, 'public/testUploads');
@@ -30,7 +32,7 @@ const storage2 = multer.diskStorage({
 
 const upload = multer({storage: storage});
 const upload2 = multer({storage: storage2});
-
+const upload3 = multer({storage: storage});
 const router = express.Router();
 
 router.post('/createclass', authController.createclass);
@@ -46,6 +48,8 @@ router.post('/loginstudent', authController.loginStudent);
 router.post('/joinclass', authControllers.joinclass);
 
 router.post('/uploadassignment', upload.single('assignmentupload'), authControllers.uploadassignment);
+
+router.post('/uploadst', upload.single('studentassignments'), authControllers.uploadstudentassignment);
 
 router.get('/assignmentpage', authControllers.assignmentpage);
 

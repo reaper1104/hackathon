@@ -136,6 +136,55 @@ exports.uploadassignment = (req, res) => {
     });
 }
 
+
+exports.uploadstudentassignment = (req, res) => {
+    console.log("body: " + req.body.code);
+    console.log(req.file);
+
+    db.all('SELECT ID FROM ASSIGNMENT WHERE LINK=?', [req.file.path], (error, results) => {
+        if(error) {
+            console.log(error);
+            return res.send(error);
+        }
+        else {
+            if(results.length >0) {
+                return res.send(`<a href='/teacher/assignment'>File already uploaded</a>`);
+            }
+            else {
+                console.log('hello');
+                db.all('SELECT ID FROM CLASS WHERE CODE=?', [req.body.code], (err, resul) => {
+                    if(err) {
+                        console.log(err);
+                        return res.send(err);
+                    }
+                    else {
+                        console.log(resul[0]);
+                        db.all('SELECT ID FROM STUDENT WHERE USERNAME=? ', [req.session.studentusername], (errors, result) => {
+                            if(errors) {
+                                console.log(errors);
+                                return res.send(errors);
+                            }
+                            else {
+                                db.run('INSERT INTO ASSIGNMENT_STUDENT(AID, LINK_RES, SID, CID) VALUES ((?), (?), (?), (?))', [results[0].ID, req.file.path, result[0].ID, resul[0].ID], (errorss) => {
+                                    if(errorss) {
+                                        console.log('hello');
+                                        console.log(errorss);
+                                        return res.send(errorss);
+                                    }
+                                    else {
+                                        console.log("REsult done and dusted");
+                                        res.send(`<a href='/student/assignment'>Assignment uploaded</a>`);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
+
 exports.studentassignmentpage = (req, res, next) => {
     console.log(url.parse(req.url, true).query);
 //    console.log("body: " +req.body.id);
@@ -185,6 +234,7 @@ exports.createtest = (req, res) => {
                         return res.send(err);
                     }       
                     else {
+                        
                         db.get('INSERT INTO TEST(NAME, CID, LINK, TEST_DATE) VALUES ((?), (?), (?), (?))', [req.body.testName, resul[0].ID, req.body.googleforms, req.body.testDate], (errors) => {
                             if(errors) {
                                 console.log(errors);

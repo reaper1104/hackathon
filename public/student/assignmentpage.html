@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment</title>
+    <title>Student Assignment</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -13,7 +13,6 @@
     </style>
 </head>
 <body onload="viewstudentassignments()">
-  <div class="hero-head">
     <nav class="navbar is-dark is-fixed-top">
         <div class="navbar-brand">
           <a class="navbar-item is-active" href="/student/homepage">
@@ -32,58 +31,66 @@
             <a class="navbar-item" href="/student/joinclass">Join Class</a>
         </div>
     </nav>
+    <div class="container">
+      <table class="table is-striped is-hoverable is-fullwidth" id = "table" >
+        <caption class="title">Previous Assignment</caption>
+          <thead>
+          <tr>
+            <th><abbr title="S No.">Serial No.</abbr></th>
+            <th>Assignment Name</th>
+            <th>Link</th>
+          </tr>
+          </thead>
+          <tbody id = "assignments">
+          </tbody>
+      </table>
   </div>
     <h1>Assignment Upload</h1>
     <div class="hero-body">
-        <div class="container">
-            <div class="columns is-centered">
-                <form class="box" action="/auth/uploadassignment" method="POST" enctype="multipart/form-data">
-                  <legend class="title">New Assignment</legend>
-                    <div class="field">
-                        <label class="label">Assignment Name:</label>
-                        <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Assignmentname" name="assignmentname" required>
-                            <span class="icon is-small is-left">
-                                    <i class="fa fa-user"></i>
-                                </span>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Upload file: </label>
-                        <div class="control has-icons-left">
-                            <input class="input" type="file" placeholder="File" name="assignmentupload" required>
-                            <span class="icon is-small is-left">
-                                    <i class="fa fa-lock"></i>
-                                </span>
-                        </div>
-                    </div>
-                    <div class="field is-grouped is-grouped-right">
-                        <p class="control">
-                            <input type="submit" value="Submit" class="button is-info">
-                        </p>
-                        <p class="control">
-                            <input type="reset" value="Reset" class="button is-danger">
-                        </p>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="container">
-            <table class="table is-striped is-hoverable is-fullwidth" id = "table" >
-              <caption class="title">Previous Assignment</caption>
-                <thead>
-                <tr>
-                  <th><abbr title="S No.">Serial No.</abbr></th>
-                  <th>Assignment Name</th>
-                  <th>Link</th>
-                </tr>
-                </thead>
-                <tbody id = "assignments">
-                </tbody>
-            </table>
+      <div class="container">
+          <div class="columns is-centered">
+              <form class="box" action='/auth/uploadst' method="POST" enctype="multipart/form-data">
+                <legend class="title">Create Assignment</legend>
+                  <div class="field">
+                      <label class="label">Assignment Name:</label>
+                      <div class="control has-icons-left">
+                          <input class="input" type="text" placeholder="Assignmentname" name="assignmentname" required>
+                          <span class="icon is-small is-left">
+                                  <i class="fa fa-user"></i>
+                              </span>
+                      </div>
+                  </div>
+                  <div class="field">
+                      <label class="label">Upload file: </label>
+                      <div class="control has-icons-left">
+                          <input class="input" type="file" placeholder="File" name="studentassignments" required>
+                          <span class="icon is-small is-left">
+                                  <i class="fa fa-lock"></i>
+                              </span>
+                      </div>
+                  </div>
+                  <div class="field">
+                      <label class="label">Class Code: </label>
+                      <div class="control has-icons-left" id="codeee">
 
-        </div>
-    </div>
+                          <span class="icon is-small is-left">
+                                  <i class="fa fa-lock"></i>
+                          </span>
+                      </div>
+                  </div>
+
+                  <div class="field is-grouped is-grouped-right">
+                      <p class="control">
+                          <input type="submit" onclick="" value="Submit" class="button is-info">
+                      </p>
+                      <p class="control">
+                          <input type="reset" value="Reset" class="button is-danger">
+                      </p>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
