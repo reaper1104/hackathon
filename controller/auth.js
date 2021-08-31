@@ -29,7 +29,7 @@ exports.register = (req, res) => {
   db.all(`SELECT USERNAME FROM TEACHER WHERE USERNAME = ?`, [userName], (error, results) => {
 
     if(error) {
-        console.log(error); 
+        console.log(error);
     }
 
     console.log(results);
@@ -40,12 +40,12 @@ exports.register = (req, res) => {
     }
 
     else if(password !== confirmPassword) {
-        return res.send('Passwords donot match');
+        return res.send(`<a href='/teacher/register'>Passwords don't match</a>`);
         //res.redirect('/index.html');
     }
 
-    //let hashPassword = bcrypt.hash(password, 8);
-    //console.log(hashPassword);
+  //  let password = bcrypt.hash(password, 8);
+  //  console.log(password);
 
     db.run('INSERT INTO TEACHER(NAME, USERNAME, PASSWORD, EMAIL) VALUES ((?), (?), (?), (?))', [ name, userName, password, email] , (error) => {
         if(error) {
@@ -74,7 +74,7 @@ exports.regstudent = (req, res) => {
   db.all(`SELECT USERNAME FROM STUDENT WHERE USERNAME = ?`, [userName], (error, results) => {
 
     if(error) {
-        console.log(error); 
+        console.log(error);
     }
 
     console.log(results);
@@ -85,7 +85,7 @@ exports.regstudent = (req, res) => {
     }
 
     else if(password !== confirmPassword) {
-        return res.send('Passwords donot match');
+        return res.send(`<a href='/student/register'>Passwords don't match</a>`);
         //res.redirect('/index.html');
     }
 
@@ -112,12 +112,12 @@ exports.loginTeacher = async (req, res) => {
   console.log(req.session);
   try {
       const {userName, password} = req.body;
-      
+
       if(userName && password) {
           db.all('SELECT * FROM TEACHER WHERE USERNAME = ? AND PASSWORD = ?', [userName, password], function(error, results, fields) {
             if(error) {
               return res.send(error);
-            }  
+            }
             if (results.length > 0) {
                   sessionData = req.session;
 
@@ -128,15 +128,15 @@ exports.loginTeacher = async (req, res) => {
                   res.redirect('/teacher/homepage');
               } else {
                   res.send('Incorrect Username and/or Password!');
-              }			
+              }
               res.end();
           });
       } else {
           res.send('Please enter Username and Password!');
           res.end();
       }
-  
-  
+
+
   }
   catch(error) {
       console.log(error);
@@ -147,12 +147,12 @@ exports.loginStudent = (req, res) => {
   console.log(req.body);
   try {
       const {userName, password} = req.body;
-      
+
       if(userName && password) {
           db.all('SELECT * FROM STUDENT WHERE USERNAME = ? AND PASSWORD = ?', [userName, password], function(error, results, fields) {
               if (results.length > 0) {
                   sessionData = req.session;
-                
+
                   sessionData.loggedinstudent = true;
                   sessionData.studentusername = userName;
                   console.log(req.session);
@@ -160,15 +160,15 @@ exports.loginStudent = (req, res) => {
                   res.redirect('/student/homepage');
               } else {
                   res.send('Incorrect Username and/or Password!');
-              }			
+              }
               res.end();
           });
       } else {
           res.send('Please enter Username and Password!');
           res.end();
       }
-  
-  
+
+
   }
   catch(error) {
       console.log(error);
@@ -179,7 +179,7 @@ exports.loginStudent = (req, res) => {
 
 
 exports.createclass = (req, res) => {
-  
+
   console.log(req.body);
   const {classname, subjectname} = req.body;
   console.log(classname);
@@ -229,7 +229,7 @@ exports.createclass = (req, res) => {
                 var classcode = "`+classcode+`";
                 document.getElementById('showcode').innerHTML = classcode;
                 //classcode.select();
-                //classcode.setSelectionRange(0, 99999); 
+                //classcode.setSelectionRange(0, 99999);
                 //navigator.clipboard.writeText(classcode.value);
                 //alert("Text Copied");
               }
@@ -248,7 +248,7 @@ exports.createclass = (req, res) => {
                     <span></span>
                   </div>
                 </div>
-          
+
                   <div class="navbar-end">
                     <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link is-arrowless">
@@ -279,7 +279,7 @@ exports.createclass = (req, res) => {
                       </div>
                     </div>
                 </div>
-              </nav> 
+              </nav>
               <div class= "hero-body">
                 <div class="container is-centered">
                   <button class="button is-medium is-fullwidth" onclick="myfunction()">Get Classcode</button>
@@ -293,7 +293,7 @@ exports.createclass = (req, res) => {
             }
           });
         }
-        
+
       });
     }
   });

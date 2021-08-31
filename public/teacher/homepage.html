@@ -10,50 +10,27 @@
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <style media="screen">
+    .hero-body{
+      padding: 5rem 5rem;
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar is-dark is-fixed-top">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        Home
-      </a>
-      <div class="navbar-burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link is-arrowless">
-          Sign Up
-        </a>
-        <div class="navbar-dropdown">
-          <a href="/student/register" class="navbar-item">
-            Student
+  <div class="hero-head">
+    <nav class="navbar is-dark is-fixed-top">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/teacher/homepage">
+            Home
           </a>
-          <hr class="navbar-divider">
-          <a href="/teacher/register" class="navbar-item">
-            Teacher
-          </a>
-        </div>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link is-arrowless">
-            Sign In
-          </a>
-          <div class="navbar-dropdown">
-            <a href="/student/login" class="navbar-item">
-              Student
-            </a>
-            <hr class="navbar-divider">
-            <a href="/teacher/login" class="navbar-item">
-              Teacher
-            </a>
+          <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
 
+<<<<<<< HEAD
     </div>
   </nav>
     <button> </button>
@@ -61,6 +38,18 @@
     <div class="card">
         <div class="card-content">
             <div class="content">
+=======
+          <div class="navbar-end">
+            <a class="navbar-item is-active" href="/teacher/assignment">Assignment</a>
+            <a class="navbar-item" href="/teacher/test">Test</a>
+            <a class="navbar-item" href="/teacher/createclass">Create Class</a>
+        </div>
+    </nav>
+  </div>
+  <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+>>>>>>> f0d81690e230bcdec2a001ba4e094ff3ff6dbe15
                 <form id="createclass" class="box" action="/auth/createclass" method="POST">
                     <div class="field">
                         <label for="" class="label">Class Name</label>
@@ -80,23 +69,18 @@
                           </span>
                         </div>
                     </div>
-                      <div>
-                        <input type="submit" value="Create" class="button is-info" onclick="">
-                        <button class="button">
-                          Reset
-                        </button>
-                      </div>
+                    <div class="field is-grouped is-grouped-right">
+                        <p class="control">
+                            <input type="submit" value="Submit" class="button is-info">
+                        </p>
+                        <p class="control">
+                            <input type="reset" value="Reset" class="button is-danger">
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <ol id="classes">
-      <li id="class">
-        <div id="classname"></div>
-        <div id="subjectname"></div>
-      </li>
-    </ol>
 </body>
 <script src="./javascripts/main.js"></script>
 </html>

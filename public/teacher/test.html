@@ -7,33 +7,41 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style media="screen">
+      .hero-body{
+        padding: 5rem 5rem;
+      }
+    </style>
   </head>
   <body onload="loadtest()">
-    <nav class="navbar is-dark is-fixed-top">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/teacher/homepage">
-          Home
-        </a>
-        <div class="navbar-burger">
-          <span></span>
-          <span></span>
-          <span></span>
+    <div class="hero-head">
+      <nav class="navbar is-dark is-fixed-top">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/teacher/homepage">
+            Home
+          </a>
+          <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-      </div>
 
-        <div class="navbar-end">
-          <a class="navbar-item" href="/teacher/homepage">Class</a>
-          <a class="navbar-item" href="/teacher/assignment">Assignment</a>
-          <a class="navbar-item is-active" href="/teacher/test">Test</a>
-      </div>
-    </nav>
-      <div class="section">
+          <div class="navbar-end">
+            <a class="navbar-item" href="/teacher/assignment">Assignment</a>
+            <a class="navbar-item is-active" href="/teacher/test">Test</a>
+            <a class="navbar-item" href="/teacher/createclass">Create Class</a>
+        </div>
+      </nav>
+    </div>
+      <div class="hero-body">
         <div class="columns">
           <div class="column is-one-quarter">
           </div>
           <div class="column is-half">
             <div class="container">
               <form class="box" action="/auth/createtest" method="POST" enctype="multipart/form-data">
+                <legend class="title">New Test</legend>
                 <div class="field">
                     <label class="label" name="testName">Test Name</label>
                     <div class="control">
@@ -69,20 +77,20 @@
           </div>
         </div>
       </div>
-      <h1>Previous Tests</h1>
-      <div class="hero-body">
-          <table class="table is-striped is-hoverable is-fullwidth" id = "table">
-              <thead>
-              <tr>
-                <th><abbr title="S No.">Serial No.</abbr></th>
-                <th>Test Name</th>
-                <th>Test Date</th>
-                <th>Link</th>
-              </tr>
-              </thead>
-              <tbody id="tests">
-              </tbody>
-          </table>
+      <div class="container">
+        <table class="table is-striped is-hoverable is-fullwidth" id = "table">
+          <caption class="title">Previous Test</caption>
+            <thead>
+            <tr>
+              <th><abbr title="S No.">Serial No.</abbr></th>
+              <th>Test Name</th>
+              <th>Test Date</th>
+              <th>Link</th>
+            </tr>
+            </thead>
+            <tbody id="tests">
+            </tbody>
+        </table>
       </div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
