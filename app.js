@@ -4,6 +4,7 @@ const cors = require('cors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const sqlite3 = require('sqlite3').verbose();
+const {google} = require('googleapis');
 var dotenv = require('dotenv');
 const { response, request } = require('express');
 const session = require('express-session');
@@ -18,6 +19,12 @@ let db = new sqlite3.Database('./schema.db', (err) => {
     }
     console.log('Connected to the chinook database.');
 });
+
+const blogger = google.blogger({
+    version: 'v3',
+    auth: 'AIzaSyCUPy_Kf-1SlnvJ2Gnpc9RNujQyECAUAPI'
+});
+  
 
 
 

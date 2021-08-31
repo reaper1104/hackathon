@@ -31,52 +31,6 @@
             <a class="navbar-item" href="/student/joinclass">Join Class</a>
         </div>
     </nav>
-    <h1>Assignment Upload</h1>
-    <div class="hero-body">
-      <div class="container">
-          <div class="columns is-centered">
-              <form class="box" action='/auth/uploadst' method="POST" enctype="multipart/form-data">
-                <legend class="title">Create Assignment</legend>
-                  <div class="field">
-                      <label class="label">Assignment Name:</label>
-                      <div class="control has-icons-left">
-                          <input class="input" type="text" placeholder="Assignmentname" name="assignmentname" required>
-                          <span class="icon is-small is-left">
-                                  <i class="fa fa-user"></i>
-                              </span>
-                      </div>
-                  </div>
-                  <div class="field">
-                      <label class="label">Upload file: </label>
-                      <div class="control has-icons-left">
-                          <input class="input" type="file" placeholder="File" name="studentassignments" required>
-                          <span class="icon is-small is-left">
-                                  <i class="fa fa-lock"></i>
-                              </span>
-                      </div>
-                  </div>
-                  <div class="field">
-                      <label class="label">Class Code: </label>
-                      <div class="control has-icons-left" id="codeee">
-
-                          <span class="icon is-small is-left">
-                                  <i class="fa fa-lock"></i>
-                          </span>
-                      </div>
-                  </div>
-
-                  <div class="field is-grouped is-grouped-right">
-                      <p class="control">
-                          <input type="submit" onclick="" value="Submit" class="button is-info">
-                      </p>
-                      <p class="control">
-                          <input type="reset" value="Reset" class="button is-danger">
-                      </p>
-                  </div>
-              </form>
-          </div>
-      </div>
-  </div>
   <div class="container">
     <table class="table is-striped is-hoverable is-fullwidth" id = "table" >
       <caption class="title">Previous Assignment</caption>
