@@ -123,6 +123,39 @@ function loadstudenttests() {
         }
     
         document.getElementById('upcomingtests').innerHTML = output;
+
+    })
+    .catch(err => console.log(err))
+    setTimeout(testup, 5000);
+}
+
+function testup() {
+    const code=localStorage.getItem("code");
+    fetch('/auth/studenttestpage?' + new URLSearchParams({
+        id: code,
+    }))
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        console.log('hello huys ~~~');
+        var i=0;
+        var x =0;
+        var output = '';
+        console.log(data.NAME);
+        for(; i<data.length; i++) {
+            console.log("what's up bro");
+            x += 1;
+            output += `
+            <tr>
+                <td>${x}</td>
+                <td>${data[i].NAME}</td>
+                <td>${data[i].TEST_DATE}</td>
+                <td><p>Link Disabled</p></td>
+            </tr>`;
+        }
+    
+        document.getElementById('upcomingtests').innerHTML = output;
+
     })
     .catch(err => console.log(err))
 
