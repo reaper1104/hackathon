@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Student</title>
     <style>
-        .box{
-            background-color:rgb(187, 224, 212);
-            width: 20%;
-            height: 250px;
-        }
-        #center {
-            display: block;
-            margin-top: 20%;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-        }
-
-        #marg {
-            margin-top: 10px;
-        }
-        
+      .hero-body{
+        padding: 5rem 5rem;
+      }
+      .box{
+        background: rgb(198,255,252);
+        background: linear-gradient(39deg, rgba(198,255,252,1) 0%, rgba(119,202,207,1) 49%, rgba(198,255,252,1) 100%);
+      }
     </style>
-    <title>Student homepage</title>
 </head>
 <body onload="view()">
-    <div class="columns is-multiline" id="hellomf">
+  <div class="hero-head">
+    <nav class="navbar is-dark is-fixed-top">
+        <div class="navbar-brand">
+          <a class="navbar-item is-active" href="/student/homepage">
+            Home
+          </a>
+          <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+          <div class="navbar-end">
+            <a class="navbar-item" href="/student/assignment">Assignment</a>
+            <a class="navbar-item" href="/student/test">Test</a>
+            <a class="navbar-item" href="/student/joinclass">Join Class</a>
+            <a class="navbar-item" href="/">Logout</a>
+        </div>
+    </nav>
+  </div>
+  <div class="hero-body">
+    <div class="container">
+          <div class="columns is-multiline is-desktop" id="hellomf"></div>
     </div>
+  </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 <script src="../javascripts/student.js"></script>

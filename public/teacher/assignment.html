@@ -6,6 +6,11 @@
     <title>Assignment</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style media="screen">
+      .hero-body{
+        padding: 5rem 5rem;
+      }
+    </style>
 </head>
 <body onload="viewassignments()">
     <nav class="navbar is-dark is-fixed-top">
@@ -21,16 +26,16 @@
         </div>
 
           <div class="navbar-end">
-            <a class="navbar-item" href="/teacher/homepage">Class</a>
             <a class="navbar-item is-active" href="/teacher/assignment">Assignment</a>
             <a class="navbar-item" href="/teacher/test">Test</a>
+            <a class="navbar-item" href="/teacher/createclass">Create Class</a>
         </div>
     </nav>
-    <h1>Assignment Upload</h1>
     <div class="hero-body">
         <div class="container">
             <div class="columns is-centered">
                 <form class="box" action="/auth/uploadassignment" method="POST" enctype="multipart/form-data">
+                  <legend class="title">Create Assignment</legend>
                     <div class="field">
                         <label class="label">Assignment Name:</label>
                         <div class="control has-icons-left">
@@ -71,23 +76,23 @@
             </div>
         </div>
     </div>
-    <h1>Previous Assignments</h1>
-    <div class="hero-body">
-        <table class="table is-striped is-hoverable is-fullwidth" id = "table" >
-            <thead>
-            <tr>
-              <th><abbr title="S No.">Serial No.</abbr></th>
-              <th>Assignment Name</th>
-              <th>Date</th>
-              <th>Link</th>
-            </tr>
-            </thead>
-            <tbody id = "assignments">
-            </tbody>
-        </table>
-
-            
+    <div class="container">
+      <table class="table is-striped is-hoverable is-fullwidth" id = "table" >
+        <caption class="title">Previous Assignment</caption>
+          <thead>
+          <tr>
+            <th><abbr title="S No.">Serial No.</abbr></th>
+            <th>Assignment Name</th>
+            <th>Date</th>
+            <th>Link</th>
+          </tr>
+          </thead>
+          <tbody id = "assignments">
+          </tbody>
+      </table>
     </div>
+
+
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
