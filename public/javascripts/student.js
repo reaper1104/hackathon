@@ -7,21 +7,19 @@ function view() {
         console.log(data);
         var i=0;
         var x = 0;
-        var output = `<div class="box">
-        <button class="button is-warning is-light is-large is-fullwidth"  id="center"  onclick="location.href='/student/joinclass'">Join Class</button>
-    </div>`;
+        var output=``;
         for(; i<data.length; i++) {
             x += 1;
             output += `
+                <div class="column">
                 <div class="box">
-                <ul>
-                    <li><a onclick='dashboard(this)' id="${data[i].CODE}" class='button is-success is-light is-large is-fullwidth'>'${data[i].SUBJECT}'</a></li>
-                    <li><p class="button is-warning is-light is-large is-fullwidth" id="marg">'${data[i].NAME}'</p></li>
-                    <li><p class="button is-danger is-light is-large is-fullwidth" id="marg">'${data[i].CODE}'</p></li>
-                </ul>
+                  <p class="title is-underlined">${data[i].NAME}</p>
+                  <br>
+                  <p><a onclick='dashboard(this)' id="${data[i].CODE}" class="subtitle">${data[i].SUBJECT}</a></p>
+                </div>
                 </div>`;
         }
-    
+
         document.getElementById('hellomf').innerHTML = output;
 
     })
@@ -31,7 +29,7 @@ function view() {
 
 function dashboard(elem) {
     console.log(typeof(elem.id));
-    const code = elem.id.toString();        
+    const code = elem.id.toString();
     const ide = {id: code};
     localStorage.setItem("code", code);
 //    const response = await fetch('/auth/studentassignmentpage', {
@@ -60,10 +58,9 @@ function dashboard(elem) {
     }))
     .then(response => response.json())
     .then(data => {
-        
+
          window.location = '/student/assignment';
 
     })
     .catch(err => console.log(err));
 }
-

@@ -10,11 +10,17 @@
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <style>
+    .hero-body{
+      padding: 5rem 5rem;
+    }
+  </style>
 </head>
 <body>
+  <div class="hero-head">
     <nav class="navbar is-dark is-fixed-top">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
+          <a class="navbar-item is-active" href="/student/homepage">
             Home
           </a>
           <div class="navbar-burger">
@@ -23,42 +29,20 @@
             <span></span>
           </div>
         </div>
-        <div class="navbar-end">
-            <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless">
-              Sign Up
-            </a>
-            <div class="navbar-dropdown">
-              <a href="/student/register" class="navbar-item">
-                Student
-              </a>
-              <hr class="navbar-divider">
-              <a href="/teacher/register" class="navbar-item">
-                Teacher
-              </a>
-            </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless">
-                Sign In
-            </a>
-            <div class="navbar-dropdown">
-                <a href="/student/login" class="navbar-item">
-                  Student
-                </a>
-                <hr class="navbar-divider">
-                <a href="/teacher/login" class="navbar-item">
-                  Teacher
-                </a>
-              </div>
-            </div>
+
+          <div class="navbar-end">
+            <a class="navbar-item" href="/student/assignment">Assignment</a>
+            <a class="navbar-item" href="/student/test">Test</a>
+            <a class="navbar-item" href="/student/joinclass">Join Class</a>
         </div>
     </nav>
+  </div>
 
     <div class="hero-body">
         <div class="container">
             <div class="columns is-centered">
               <form class="box" action="/auth/joinclass" method="POST">
+                <legend class="title">Join Class</legend>
                 <div class="field">
                     <label class="label">Subject Code:</label>
                     <div class="control has-icons-left">
